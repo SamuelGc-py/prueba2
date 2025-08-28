@@ -1,0 +1,91 @@
+-- Esquema: barranquillatours
+
+CREATE SCHEMA IF NOT EXISTS barranquillatours DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE barranquillatours;
+
+-- Tabla de usuarios (clientes y administradores)
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellido VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL, -- Guardar siempre con hash
+  telefono VARCHAR(30),
+  rol ENUM('cliente', 'admin') DEFAULT 'cliente',
+  fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+
+-- Tabla de tours
+CREATE TABLE tours (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) NOT NULL,
+  ubicacion VARCHAR(150) NOT NULL,
+  precio DECIMAL(10,2) NOT NULL,
+  duracion_horas DECIMAL(5,2) NOT NULL,
+  descripcion TEXT NOT NULL,
+  url_imagen VARCHAR(255),
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+
+-- Tabla de reservas
+CREATE TABLE reservas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  tour_id INT NOT NULL,
+  fecha_reserva DATETIME NOT NULL,
+  cantidad_personas INT NOT NULL,
+  estado ENUM('pendiente', 'confirmada', 'cancelada') DEFAULT 'pendiente',
+  total_pagado DECIMAL(10,2) NOT NULL,
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_reserva_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_reserva_tour FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+
+-- Tabla de pagos
+CREATE TABLE pagos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  reserva_id INT NOT NULL,
+  metodo ENUM('tarjeta', 'efectivo', 'transferencia') NOT NULL,
+  monto DECIMAL(10,2) NOT NULL,
+  fecha_pago TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_pago_reserva FOREIGN KEY (reserva_id) REFERENCES reservas(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+
+-- Tabla de reseñas (opiniones de los clientes)
+CREATE TABLE reseñas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  tour_id INT NOT NULL,
+  calificacion INT CHECK (calificacion BETWEEN 1 AND 10),
+  comentario TEXT,
+  fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_reseña_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT fk_reseña_tour FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+INSERT INTO usuarios (nombre, apellido, email, password, telefono, rol) VALUES
+('Juan', 'Pérez', 'juan@example.com', 'hash_juan', '3001234567', 'cliente'),
+('Admin', 'Tours', 'admin@example.com', 'hash_admin', '3009876543', 'admin');
+
+INSERT INTO tours (titulo, ubicacion, precio, duracion_horas, descripcion, url_imagen) VALUES
+('Tour Gastronómico del Mercado', 'Mercado de Barranquilla', 50000, 3, 'Un recorrido para probar los sabores locales.', 'https://placehold.co/600x400?text=Tour+Gastronomico'),
+('Caminata por el Centro Histórico', 'Centro Histórico', 30000, 2.5, 'Descubre la historia y arquitectura de la ciudad.', 'https://placehold.co/600x400?text=Centro+Historico'),
+('Aventura en el Río Magdalena', 'Río Magdalena', 80000, 4, 'Un emocionante paseo en lancha por el río más importante.', 'https://placehold.co/600x400?text=Rio+Magdalena');
+
+INSERT INTO reservas (usuario_id, tour_id, fecha_reserva, cantidad_personas, estado, total_pagado) VALUES
+(1, 1, '2025-09-10 10:00:00', 2, 'confirmada', 100000),
+(1, 2, '2025-09-15 14:00:00', 3, 'pendiente', 90000),
+(2, 3, '2025-09-20 08:30:00', 4, 'confirmada', 320000);
+
+INSERT INTO pagos (reserva_id, metodo, monto) VALUES
+(1, 'tarjeta', 100000),
+(2, 'efectivo', 90000),
+(3, 'transferencia', 320000);
+
+INSERT INTO reseñas (usuario_id, tour_id, calificacion, comentario) VALUES
+(1, 1, 5, 'Excelente experiencia, la comida deliciosa!'),
+(1, 2, 4, 'Muy buen recorrido, aunque un poco corto.'),
+(2, 3, 5, 'La aventura en el río fue inolvidable!');

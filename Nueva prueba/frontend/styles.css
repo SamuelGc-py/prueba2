@@ -1,0 +1,859 @@
+:root {
+    --primary: #FF8C00;
+    --secondary: #0072BB;
+    --accent: #FFD700;
+    --light: #000000;
+    --dark: #1E1E1E;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e6f0ff 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#navegacion {
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#contenedor-nav {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 1rem;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo {
+    height: 48px;
+}
+
+#menu-desktop {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+}
+
+#menu-desktop a {
+    color: #1f2937;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#menu-desktop a:hover {
+    color: #ff8c00;
+}
+
+#addTourBtn,
+#addTourMobileBtn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    color: white;
+    background: var(--primary);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#addTourBtn:hover,
+#addTourMobileBtn:hover {
+    background: var(--secondary);
+}
+
+#menu-mobile-btn-contenedor {
+    display: block;
+}
+
+#mobileMenuBtn {
+    color: #1f2937;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+#mobileMenu {
+    display: none;
+    padding: 1rem 0;
+}
+
+#mobileMenu a {
+    display: block;
+    padding: 0.5rem;
+    color: #1f2937;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://placehold.co/1920x1080?text=Barranquilla+Colombia+Carnaval+Colorido') center/cover no-repeat;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+#hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#hero div button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+#btn-eventos {
+    background: var(--primary);
+    color: white;
+}
+
+#btn-eventos:hover {
+    background: var(--secondary);
+}
+
+#btn-tours {
+    background: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+#destacados {
+    background: var(--primary);
+    color: white;
+    padding: 2rem 0;
+}
+
+#contenedor-destacados {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    text-align: center;
+}
+
+#contenedor-destacados div i {
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+#contenedor-destacados div h3 {
+    font-weight: bold;
+    margin: 0;
+}
+
+#contenedor-destacados div p {
+    font-size: 0.875rem;
+}
+
+#contenido-principal {
+    max-width: 1280px;
+    margin: auto;
+    padding: 3rem 1rem;
+}
+
+#crudForm {
+    display: none;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+#crudForm h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+#crudForm h2 i {
+    color: var(--primary);
+}
+
+#tourForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#formulario-campos {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+}
+
+#formulario-campos div label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+#formulario-campos div input,
+#formulario-campos div textarea {
+    margin-top: 0.25rem;
+    display: block;
+    width: 100%;
+    border-radius: 0.375rem;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 0.75rem;
+}
+
+#mediaContainer {
+    margin-top: 0.5rem;
+    border: 2px dashed #d1d5db;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+#mediaContainer:hover {
+    border-color: #ff8c00;
+}
+
+#selectedMedia {
+    max-height: 12rem;
+    margin: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 0.375rem;
+    display: none;
+}
+
+#mediaPlaceholder i {
+    font-size: 2.25rem;
+    color: #9ca3af;
+    margin-bottom: 0.5rem;
+}
+
+#mediaPlaceholder p {
+    color: #6b7280;
+    margin: 0;
+}
+
+#mediaPlaceholder p:last-of-type {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 0.5rem;
+}
+
+#mediaInput {
+    display: none;
+}
+
+#tourForm div:last-of-type {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+#cancelBtn,
+#saveBtn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+#cancelBtn {
+    border: 1px solid #d1d5db;
+    color: #374151;
+    background: white;
+}
+
+#cancelBtn:hover {
+    background: #f9fafb;
+}
+
+#saveBtn {
+    border: 1px solid transparent;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: white;
+    background: var(--primary);
+}
+
+#saveBtn:hover {
+    background: var(--secondary);
+}
+
+#seccion-tours {
+    margin-bottom: 2rem;
+}
+
+#contenedor-tours-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+#contenedor-tours-header h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+#contenedor-tours-header p {
+    color: #4b5563;
+}
+
+#filtros {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+}
+
+#filtros button {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+#filtros button:hover {
+    background: #fff;
+    color: var(--primary);
+}
+
+
+/* Nuevas reglas CSS para manejar la clase 'active' */
+
+#filtros button.active {
+    background: var(--primary);
+    color: white;
+}
+
+#toursContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+#toursContainer>div {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-top: 4px solid var(--primary);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+#toursContainer>div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 140, 0, 0.2);
+}
+
+#toursContainer>div>div:first-child {
+    position: relative;
+}
+
+#toursContainer>div img {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+}
+
+#toursContainer>div>div:first-child>div:first-of-type {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#toursContainer>div>div:first-child>div:last-of-type {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+#toursContainer>div>div:first-child>div:last-of-type button {
+    padding: 0.5rem;
+    background: white;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+}
+
+#toursContainer>div>div:first-child>div:last-of-type button i {
+    font-size: 1rem;
+}
+
+#toursContainer>div>div:nth-child(2) {
+    padding: 1.5rem;
+}
+
+#toursContainer>div>div:nth-child(2) h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#toursContainer>div>div:nth-child(2)>div {
+    display: flex;
+    align-items: center;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+}
+
+#toursContainer>div>div:nth-child(2)>div i {
+    margin-right: 0.5rem;
+}
+
+#toursContainer>div>div:nth-child(2) p {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+#toursContainer>div>div:last-child {
+    padding: 0 1.5rem 1.5rem;
+}
+
+#toursContainer>div>div:last-child button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    color: white;
+    background: var(--primary);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+#toursContainer>div>div:last-child button:hover {
+    background: var(--secondary);
+}
+
+#seccion-cultura {
+    margin-bottom: 4rem;
+}
+
+#seccion-cultura h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 1.5rem;
+}
+
+#tarjeta-cultura {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#imagen-cultura {
+    width: 100%;
+}
+
+#imagen-cultura img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#texto-cultura {
+    padding: 2rem;
+}
+
+#texto-cultura>div:first-of-type {
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#texto-cultura h3 {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+#texto-cultura p {
+    margin-top: 0.75rem;
+    color: #4b5563;
+}
+
+#texto-cultura div:last-of-type {
+    margin-top: 1.5rem;
+}
+
+#btn-cultura {
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    color: white;
+    background: var(--primary);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+#btn-cultura:hover {
+    background: var(--secondary);
+}
+
+#footer {
+    background: #1f2937;
+    color: white;
+    padding: 3rem 0 1.5rem;
+}
+
+#contenedor-footer {
+    max-width: 1280px;
+    margin: auto;
+    padding: 0 1rem;
+}
+
+#footer-columnas {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+#footer-columnas h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+#footer-columnas h3 img {
+    height: 2rem;
+    margin-right: 0.5rem;
+}
+
+#footer-columnas p {
+    color: #9ca3af;
+}
+
+#redes-sociales {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#redes-sociales a {
+    color: #9ca3af;
+    transition: color 0.3s ease;
+}
+
+#redes-sociales a:hover {
+    color: #ff8c00;
+}
+
+#footer-columnas h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+#footer-columnas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#footer-columnas ul li {
+    margin-bottom: 0.5rem;
+}
+
+#footer-columnas ul li a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#footer-columnas ul li a:hover {
+    color: white;
+}
+
+#footer-columnas ul li span {
+    color: #9ca3af;
+}
+
+#footer-columnas ul li i {
+    color: var(--primary);
+    margin-right: 0.5rem;
+}
+
+#footer-bottom {
+    border-top: 1px solid #374151;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#footer-bottom p {
+    color: #9ca3af;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+#footer-bottom>div {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+#footer-bottom a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+#footer-bottom a:hover {
+    color: white;
+}
+
+
+/* Nuevas reglas para el login/registro y perfiles */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.auth-form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.auth-form-container h2 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.auth-form-container input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+}
+
+.auth-form-container button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-form-container .btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.auth-form-container .btn-primary:hover {
+    background: var(--secondary);
+}
+
+.auth-form-container .link-text {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.auth-form-container .link-text a {
+    color: var(--primary);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+#login-form,
+#register-form {
+    display: none;
+}
+
+#login-form.active,
+#register-form.active {
+    display: block;
+}
+
+
+/* Reglas para la pantalla de "Me Interesa" */
+
+#interes-overlay {
+    display: none;
+}
+
+#interes-overlay.active {
+    display: flex;
+}
+
+
+/* Perfil de usuario */
+
+#user-profile-btn {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    background: transparent;
+    border: none;
+}
+
+#user-profile-btn img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 0;
+    min-width: 150px;
+    z-index: 1001;
+    display: none;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.dropdown-menu button:hover {
+    background: #f3f4f6;
+}
+
+
+/* Visibilidad de botones de edición (admin vs. usuario) */
+
+.admin-only {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    #menu-desktop {
+        display: flex;
+    }
+    #menu-mobile-btn-contenedor {
+        display: none;
+    }
+    #contenedor-destacados {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    #formulario-campos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #formulario-campos div:nth-child(5) {
+        grid-column: span 2 / span 2;
+    }
+    #formulario-campos div:last-child {
+        grid-column: span 2 / span 2;
+    }
+    #contenedor-tours-header {
+        flex-direction: row;
+        align-items: center;
+    }
+    #toursContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    #tarjeta-cultura {
+        flex-direction: row;
+    }
+    #imagen-cultura {
+        width: 50%;
+    }
+    #texto-cultura {
+        width: 50%;
+    }
+    #footer-columnas {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    #footer-bottom {
+        flex-direction: row;
+    }
+    #footer-bottom>div {
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    #toursContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
